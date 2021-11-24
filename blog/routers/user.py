@@ -4,10 +4,7 @@ from sqlalchemy.orm import Session
 from .. import models
 from ..database import get_db
 from typing import List
-from fastapi.security import OAuth2PasswordBearer
-
-auth_scheme = OAuth2PasswordBearer(tokenUrl='token')
-
+from ..oauth2 import oauth2_scheme, get_current_user
 
 router = APIRouter(
     prefix='/users',
@@ -69,30 +66,3 @@ def validate_user(user: UserValidate, db: Session = Depends(get_db)):
         return {"msg": "User successfully validated"}
     else:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Username or password is incorrect")
-
-
-def fake_hash_password(password: str):
-    return "fakehashed" + password
-
-
-async def fake_decode_token(token, db: Session = Depends(get_db)):
-    user = await db.query(models.User).filter(models.User.username == token).first()
-    return {"data": user}
-    #return UserValidate(
-    #    username = token + 'fakedecoded', password='testpassword'
-    #)
-
-
-# async def get_current_user(token: str = Depends(auth_scheme)):
-#     user = await fake_decode_token(token)
-#     return user
-
-
-def get_current_user(token: str = Depends(auth_scheme), db: Session = Depends(get_db)):
-    user = db.query(models.User).filter(models.User.username == token).first()
-    return user
-
-
-@router.get('/me', response_model=UserValidate)
-async def get_user(current_user: User = Depends(get_current_user)):
-    return current_user
