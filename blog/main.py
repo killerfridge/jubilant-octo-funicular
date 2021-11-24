@@ -27,6 +27,10 @@ tags_meta = [
     {
         "name": "Authentication",
         "description": "Handles all the **authentication** logic"
+    },
+    {
+        "name": "Posts",
+        "description": "Handles the **blog post** logic"
     }
 ]
 

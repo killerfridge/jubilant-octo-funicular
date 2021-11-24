@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from .. import models
 from ..database import get_db
 from typing import List
-from ..oauth2 import oauth2_scheme, get_current_user
+
 
 router = APIRouter(
     prefix='/users',
@@ -14,6 +14,19 @@ router = APIRouter(
 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=User)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
+
+    users = db.query(models.User)
+
+    usernames = users.where(models.User.username == user.username).first()
+
+    if usernames:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Username {user.username} already in use")
+
+    emails = users.where(models.User.email == user.email).first()
+
+    if emails:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Email {user.email} already in use. Do you wish to reset password?")
+
     new_user = models.User(**user.dict())
     new_user.set_password(user.password)
     db.add(new_user)

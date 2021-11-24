@@ -3,6 +3,7 @@ from typing import List
 from ..schemas import Post, PostCreate
 from fastapi import Depends, status, HTTPException, APIRouter
 from .. import models
+from ..oauth2 import get_current_user
 from sqlalchemy.orm import Session
 
 
@@ -19,8 +20,9 @@ async def get_posts(db: Session = Depends(get_db)):
 
 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=Post)
-async def create_posts(post: PostCreate, db: Session = Depends(get_db)):
+async def create_posts(post: PostCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     new_post = models.Post(**post.dict())
+    new_post.user_id = current_user.id
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
@@ -30,21 +32,25 @@ async def create_posts(post: PostCreate, db: Session = Depends(get_db)):
 
 @router.get("/{id}")
 async def get_post(id: int, db: Session = Depends(get_db)):
-    post = await db.query(models.Post).filter(models.Post.id == id).first()
+    post = db.query(models.Post).filter(models.Post.id == id).first()
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Post with id {id} not found')
     return {"data": post}
 
 
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
-async def delete_post(id: int, db: Session = Depends(get_db)):
-    post = await db.query(models.Post).filter(models.Post.id == id).first()
+async def delete_post(id: int, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+
+    post = db.query(models.Post).filter(models.Post.id == id).first()
 
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Post with id {id} not found')
 
-    await db.delete(post)
-    await db.commit()
+    if post.user_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Post with id {id} does not belong to user {current_user.id}")
+
+    db.delete(post)
+    db.commit()
 
     return {"message": f"Post {id} successfully deleted"}
 
