@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Fixed the Post schema so that it returns the number of votes">
+    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Added Alembic to the project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +63,7 @@
       <workItem from="1637246144434" duration="227000" />
       <workItem from="1637246393688" duration="17656000" />
       <workItem from="1637434079209" duration="23296000" />
-      <workItem from="1637839363143" duration="9460000" />
+      <workItem from="1637839363143" duration="13812000" />
     </task>
     <task id="LOCAL-00001" summary="removed the security.py file, now all contained in oauth2.py">
       <created>1637749140391</created>
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637854771286</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added Alembic to the project">
+      <created>1637856629280</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637856629280</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +167,7 @@
     <MESSAGE value="Added voting on posts to the model" />
     <MESSAGE value="Fixed votes so that it returns a 404 error if the post does not exist" />
     <MESSAGE value="Fixed the Post schema so that it returns the number of votes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the Post schema so that it returns the number of votes" />
+    <MESSAGE value="Added Alembic to the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Alembic to the project" />
   </component>
 </project>
