@@ -13,16 +13,6 @@ class PostCreate(PostBase):
     pass
 
 
-class Post(PostBase):
-    title: str
-    content: str
-    is_published = bool
-    created_at: datetime
-
-    class Config:
-        orm_mode = True
-
-
 class UserBase(BaseModel):
     username: str
     email: EmailStr
@@ -30,7 +20,6 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str
-    pass
 
 
 class UserAll(UserBase):
@@ -44,6 +33,15 @@ class UserAll(UserBase):
 
 class User(UserBase):
     created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
+class Post(PostBase):
+    created_at: datetime
+    user_id: int
+    user: User
 
     class Config:
         orm_mode = True

@@ -1,5 +1,5 @@
 from ..database import get_db
-from typing import List
+from typing import List, Optional
 from ..schemas import Post, PostCreate
 from fastapi import Depends, status, HTTPException, APIRouter
 from .. import models
@@ -14,8 +14,22 @@ router = APIRouter(
 
 
 @router.get('/', response_model=List[Post])
-async def get_posts(db: Session = Depends(get_db)):
-    posts = db.query(models.Post).all()
+async def get_posts(
+        db: Session = Depends(get_db),
+        limit: int = 10,
+        skip: int = 0,
+        search: Optional[str] = ""
+):
+    posts = db.query(models.Post).filter(models.Post.title.contains(search)).offset(skip).limit(limit).all()
+    return posts
+
+
+@router.get('/me', response_model=List[Post])
+async def get_my_posts(
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(get_current_user),
+):
+    posts = db.query(models.Post).where(models.Post.user_id == current_user.id).all()
     return posts
 
 
@@ -30,7 +44,7 @@ async def create_posts(post: PostCreate, db: Session = Depends(get_db), current_
     return new_post
 
 
-@router.get("/{id}")
+@router.get("/{id}", response_model=Post)
 async def get_post(id: int, db: Session = Depends(get_db)):
     post = db.query(models.Post).filter(models.Post.id == id).first()
     if not post:
@@ -47,7 +61,7 @@ async def delete_post(id: int, db: Session = Depends(get_db), current_user: mode
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Post with id {id} not found')
 
     if post.user_id != current_user.id:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Post with id {id} does not belong to user {current_user.id}")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Post with id {id} does not belong to user {current_user.id}")
 
     db.delete(post)
     db.commit()
@@ -56,12 +70,15 @@ async def delete_post(id: int, db: Session = Depends(get_db), current_user: mode
 
 
 @router.put('/{id}', status_code=status.HTTP_200_OK)
-def update_post(id: int, new_post:PostCreate, db: Session = Depends(get_db)):
+def update_post(id: int, new_post:PostCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     post_query = db.query(models.Post).filter(models.Post.id == id)
     post = post_query.first()
 
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Post with id {id} not found')
+
+    if not post.user_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=f"Post with id {id} does not belong to user {current_user.id}")
 
     post_query.update(new_post.dict(), synchronize_session=False)
 

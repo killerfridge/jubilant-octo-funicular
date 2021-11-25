@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Deleted additional routing from main.py that should now be covered in auth.py">
+    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Big update, should have been in smaller commits...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/oauth2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/routers/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/post.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/routers/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637749382059</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Big update, should have been in smaller commits...">
+      <created>1637769458693</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1637769458693</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +123,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="removed the security.py file, now all contained in oauth2.py" />
     <MESSAGE value="Deleted additional routing from main.py that should now be covered in auth.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted additional routing from main.py that should now be covered in auth.py" />
+    <MESSAGE value="Big update, should have been in smaller commits..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Big update, should have been in smaller commits..." />
   </component>
 </project>

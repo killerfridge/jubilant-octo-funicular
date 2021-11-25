@@ -67,15 +67,15 @@ def delete_user(id: int, db: Session = Depends(get_db)):
     return {"message": f"User {id} successfully deleted"}
 
 
-@router.post('/login')
-def validate_user(user: UserValidate, db: Session = Depends(get_db)):
-    """Validates the user by checking the password against the hashed password in the database"""
-    user_val = db.query(models.User).filter(models.User.username == user.username).first()
-
-    if not user_val:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Username or password is incorrect")
-
-    if user_val.check_password(user.password):
-        return {"msg": "User successfully validated"}
-    else:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Username or password is incorrect")
+# @router.post('/login')
+# def validate_user(user: UserValidate, db: Session = Depends(get_db)):
+#     """Validates the user by checking the password against the hashed password in the database"""
+#     user_val = db.query(models.User).filter(models.User.username == user.username).first()
+#
+#     if not user_val:
+#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Username or password is incorrect")
+#
+#     if user_val.check_password(user.password):
+#         return {"msg": "User successfully validated"}
+#     else:
+#         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Username or password is incorrect")
