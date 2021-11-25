@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Added voting on posts to the model">
+    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Fixed votes so that it returns a 404 error if the post does not exist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routers/vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/vote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/routers/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/post.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/schemas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
       <workItem from="1637246144434" duration="227000" />
       <workItem from="1637246393688" duration="17656000" />
       <workItem from="1637434079209" duration="23296000" />
-      <workItem from="1637839363143" duration="5099000" />
+      <workItem from="1637839363143" duration="8074000" />
     </task>
     <task id="LOCAL-00001" summary="removed the security.py file, now all contained in oauth2.py">
       <created>1637749140391</created>
@@ -108,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637844689456</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed votes so that it returns a 404 error if the post does not exist">
+      <created>1637847486043</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637847486043</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +153,7 @@
     <MESSAGE value="Cleaned up main.py, removed functions that don't do anything" />
     <MESSAGE value="Moved secrete data to .env file" />
     <MESSAGE value="Added voting on posts to the model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added voting on posts to the model" />
+    <MESSAGE value="Fixed votes so that it returns a 404 error if the post does not exist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed votes so that it returns a 404 error if the post does not exist" />
   </component>
 </project>

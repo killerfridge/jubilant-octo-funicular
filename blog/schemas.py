@@ -16,8 +16,6 @@ class PostCreate(PostBase):
 class UserBase(BaseModel):
     username: str
     email: EmailStr
-
-
 class UserCreate(UserBase):
     password: str
 
@@ -46,6 +44,11 @@ class Post(PostBase):
 
     class Config:
         orm_mode = True
+
+
+class PostVotes(BaseModel):
+    Post: Post
+    votes: int
 
 
 class UserValidate(UserBase):
