@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Big update, should have been in smaller commits...">
+    <list default="true" id="0e3d22b6-9745-4153-859e-533870027ef2" name="Changes" comment="Cleaned up main.py, removed functions that don't do anything">
+      <change afterPath="$PROJECT_DIR$/blog/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/routers/vote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routers/post.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/post.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routers/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routers/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/oauth2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +70,7 @@
       <workItem from="1637246144434" duration="227000" />
       <workItem from="1637246393688" duration="17656000" />
       <workItem from="1637434079209" duration="23296000" />
+      <workItem from="1637839363143" duration="2406000" />
     </task>
     <task id="LOCAL-00001" summary="removed the security.py file, now all contained in oauth2.py">
       <created>1637749140391</created>
@@ -90,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637769458693</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cleaned up main.py, removed functions that don't do anything">
+      <created>1637835404938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637835404938</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +134,7 @@
     <MESSAGE value="removed the security.py file, now all contained in oauth2.py" />
     <MESSAGE value="Deleted additional routing from main.py that should now be covered in auth.py" />
     <MESSAGE value="Big update, should have been in smaller commits..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Big update, should have been in smaller commits..." />
+    <MESSAGE value="Cleaned up main.py, removed functions that don't do anything" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up main.py, removed functions that don't do anything" />
   </component>
 </project>
