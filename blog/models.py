@@ -14,6 +14,7 @@ class User(Base):
     username = Column(String, unique=True, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
     posts = relationship("Post", back_populates="user")
+    phone_number = Column(String, nullable=True)
 
     def set_password(self, password):
         self.password = pwd_context.hash(password)
